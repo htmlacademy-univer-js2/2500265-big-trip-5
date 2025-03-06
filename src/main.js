@@ -1,11 +1,9 @@
-import Presenter from './presenter/presenter';
-import PointsModel from './model/model-for-point';
+import Presenter from './presenter/presenter.js';
+import PointsModel from './model/point-model.js';
 
 const tripControlFilters = document.querySelector('.trip-controls__filters');
 const tripEvents = document.querySelector('.trip-events');
 
 const pointsModel = new PointsModel();
 
-const currentPresenter = new Presenter(tripControlFilters, tripEvents, pointsModel);
-
-currentPresenter.init();
+new Presenter({tripControlFilters, tripEvents, pointsModel}).init();
