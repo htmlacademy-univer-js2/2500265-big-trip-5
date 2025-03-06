@@ -6,9 +6,9 @@ const MAX_COST = 2000;
 
 function getRandomOffer() {
   return {
-    'type': getRandomElementOfArray(EVENT_TYPES),
-    'title': getRandomElementOfArray(OFFERS),
-    'price': getRandomIntValue(MIN_COST, MAX_COST)
+    type: getRandomElementOfArray(EVENT_TYPES),
+    title: getRandomElementOfArray(OFFERS),
+    price: getRandomIntValue(MIN_COST, MAX_COST)
   };
 }
 
