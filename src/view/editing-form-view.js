@@ -86,7 +86,7 @@ const makeFormEditingTemplate = (data) => {
   );
 };
 
-export default class extends AbstractView {
+export default class FormEditing extends AbstractView {
   #point = null;
 
   constructor({point, onRollButtonClick, onSubmitClick}) {
