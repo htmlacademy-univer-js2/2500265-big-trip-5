@@ -1,4 +1,4 @@
-import { getRandomElementOfArray, getRandomIntValue } from '../utils';
+import { getRandomElementOfArray, getRandomIntValue } from '../utils/common.js';
 import { EVENT_TYPES, OFFERS } from '../const.js';
 
 const MIN_COST = 10;

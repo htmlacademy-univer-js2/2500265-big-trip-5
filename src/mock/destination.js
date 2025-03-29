@@ -1,4 +1,4 @@
-import {getRandomElementOfArray, getRandomIntValue} from '../utils.js';
+import {getRandomElementOfArray, getRandomIntValue} from '../utils/common.js';
 import {CITIES, DESCRIPTIONS} from '../const.js';
 
 const MIN_DESCRIPTION_NUMBER = 1;
