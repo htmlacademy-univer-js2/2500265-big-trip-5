@@ -2,7 +2,8 @@ import PointRouteView from '../view/point-of-route-view.js';
 import { render, replace, remove } from '../framework/render.js';
 import FormEditingView from '../view/editing-form-view.js';
 import { isEscapeKey } from '../utils/common.js';
-import { MODE } from '../const.js';
+import { MODE, ACTIONS, UPDATE_TYPES } from '../const.js';
+import { isSameDate } from '../utils/point-utils.js';
 
 export default class PointPresenter {
   #point = null;
@@ -52,8 +53,13 @@ export default class PointPresenter {
         this.#replaceEditFormToPoint();
       },
       onSubmitButtonClick: (value) => {
-        this.#updateData(value);
+        const isMinor = !isSameDate(value.startDatetime, this.#point.startDatetime) ||
+        !isSameDate(value.endDatetime, this.#point.endDatetime);
+        this.#updateData(ACTIONS.UPDATE_POINT, isMinor ? UPDATE_TYPES.MINOR : UPDATE_TYPES.PATCH, value);
         this.#replaceEditFormToPoint();
+      },
+      onDeleteClick: (value) => {
+        this.#updateData(ACTIONS.DELETE_POINT, UPDATE_TYPES.MINOR, value);
       }
     });
 
@@ -97,9 +103,7 @@ export default class PointPresenter {
     this.#mode = MODE.DEFAULT;
   }
 
-  #onFavouriteBtnClick = (value) => this.#updateData(value);
-
   #addToFaivorite() {
-    this.#onFavouriteBtnClick({...this.#point, isFavorite: !this.#point.isFavorite});
+    this.#updateData(ACTIONS.UPDATE_POINT, UPDATE_TYPES.MINOR, {...this.#point, isFavorite: !this.#point.isFavorite});
   }
 }
